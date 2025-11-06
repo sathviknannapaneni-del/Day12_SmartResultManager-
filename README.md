@@ -1,1 +1,3 @@
 # Day12_SmartResultManager-
+
+The Smart Student Result Management System is a C-based application designed to simplify result processing for teachers. It allows the user to input marks for multiple students, automatically calculate each student’s total and average, and assign grades based on performance ranges. After entering all data, the program provides a menu-driven interface that lets the teacher view individual student results or an overall class summary, including the number of students who passed or failed, the class average, and the highest and lowest averages. The program efficiently uses loops and conditional statements to handle logic flow, ensuring smooth execution without the use of arrays, functions, or structures.
