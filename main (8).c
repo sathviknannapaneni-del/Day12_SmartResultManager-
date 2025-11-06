@@ -1,0 +1,133 @@
+#include <stdio.h>
+
+int main() {
+    int n, i = 1, choice;
+    float s1, s2, s3;
+    float total, avg;
+    float classTotal = 0, highest = 0, lowest = 100;
+    int passCount = 0, failCount = 0;
+    
+    float avg1 = 0, avg2 = 0, avg3 = 0, avg4 = 0, avg5 = 0;
+    char g1, g2, g3, g4, g5;
+    char g1extra[3], g2extra[3], g3extra[3], g4extra[3], g5extra[3];
+    
+    printf("Smart Student Result Management\n");
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    while (i <= n) {
+        printf("\n--- Student %d ---\n", i);
+        printf("Enter marks for Subject 1: ");
+        scanf("%f", &s1);
+        printf("Enter marks for Subject 2: ");
+        scanf("%f", &s2);
+        printf("Enter marks for Subject 3: ");
+        scanf("%f", &s3);
+
+        total = s1 + s2 + s3;
+        avg = total / 3.0;
+        classTotal += avg;
+
+        if (avg > highest)
+            highest = avg;
+        if (avg < lowest)
+            lowest = avg;
+
+        if (avg >= 90) {
+            if (i == 1) { g1 = 'A'; g1extra[0] = '+'; g1extra[1] = '\0'; }
+            else if (i == 2) { g2 = 'A'; g2extra[0] = '+'; g2extra[1] = '\0'; }
+            else if (i == 3) { g3 = 'A'; g3extra[0] = '+'; g3extra[1] = '\0'; }
+            else if (i == 4) { g4 = 'A'; g4extra[0] = '+'; g4extra[1] = '\0'; }
+            else { g5 = 'A'; g5extra[0] = '+'; g5extra[1] = '\0'; }
+            passCount++;
+        } 
+        else if (avg >= 80) {
+            if (i == 1) { g1 = 'A'; g1extra[0] = '\0'; }
+            else if (i == 2) { g2 = 'A'; g2extra[0] = '\0'; }
+            else if (i == 3) { g3 = 'A'; g3extra[0] = '\0'; }
+            else if (i == 4) { g4 = 'A'; g4extra[0] = '\0'; }
+            else { g5 = 'A'; g5extra[0] = '\0'; }
+            passCount++;
+        }
+        else if (avg >= 70) {
+            if (i == 1) { g1 = 'B'; g1extra[0] = '\0'; }
+            else if (i == 2) { g2 = 'B'; g2extra[0] = '\0'; }
+            else if (i == 3) { g3 = 'B'; g3extra[0] = '\0'; }
+            else if (i == 4) { g4 = 'B'; g4extra[0] = '\0'; }
+            else { g5 = 'B'; g5extra[0] = '\0'; }
+            passCount++;
+        }
+        else if (avg >= 60) {
+            if (i == 1) { g1 = 'C'; g1extra[0] = '\0'; }
+            else if (i == 2) { g2 = 'C'; g2extra[0] = '\0'; }
+            else if (i == 3) { g3 = 'C'; g3extra[0] = '\0'; }
+            else if (i == 4) { g4 = 'C'; g4extra[0] = '\0'; }
+            else { g5 = 'C'; g5extra[0] = '\0'; }
+            passCount++;
+        }
+        else if (avg >= 50) {
+            if (i == 1) { g1 = 'D'; g1extra[0] = '\0'; }
+            else if (i == 2) { g2 = 'D'; g2extra[0] = '\0'; }
+            else if (i == 3) { g3 = 'D'; g3extra[0] = '\0'; }
+            else if (i == 4) { g4 = 'D'; g4extra[0] = '\0'; }
+            else { g5 = 'D'; g5extra[0] = '\0'; }
+            passCount++;
+        }
+        else {
+            if (i == 1) { g1 = 'F'; g1extra[0] = '\0'; }
+            else if (i == 2) { g2 = 'F'; g2extra[0] = '\0'; }
+            else if (i == 3) { g3 = 'F'; g3extra[0] = '\0'; }
+            else if (i == 4) { g4 = 'F'; g4extra[0] = '\0'; }
+            else { g5 = 'F'; g5extra[0] = '\0'; }
+            failCount++;
+        }
+        
+        if (i == 1) avg1 = avg;
+        else if (i == 2) avg2 = avg;
+        else if (i == 3) avg3 = avg;
+        else if (i == 4) avg4 = avg;
+        else if (i == 5) avg5 = avg;
+
+        i++;
+    }
+
+    do {
+        printf("\n========= Menu =========\n");
+        printf("1. View All Results\n");
+        printf("2. View Class Summary\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("\n--- Result Sheet ---\n");
+            if (n >= 1)
+                printf("Student 1: Avg = %.1f → Grade %c%s\n", avg1, g1, g1extra);
+            if (n >= 2)
+                printf("Student 2: Avg = %.1f → Grade %c%s\n", avg2, g2, g2extra);
+            if (n >= 3)
+                printf("Student 3: Avg = %.1f → Grade %c%s\n", avg3, g3, g3extra);
+            if (n >= 4)
+                printf("Student 4: Avg = %.1f → Grade %c%s\n", avg4, g4, g4extra);
+            if (n >= 5)
+                printf("Student 5: Avg = %.1f → Grade %c%s\n", avg5, g5, g5extra);
+        } 
+        else if (choice == 2) {
+            printf("\n--- Class Summary ---\n");
+            printf("Total Students: %d\n", n);
+            printf("Passed: %d\n", passCount);
+            printf("Failed: %d\n", failCount);
+            printf("Class Average: %.1f\n", classTotal / n);
+            printf("Highest Average: %.1f\n", highest);
+            printf("Lowest Average: %.1f\n", lowest);
+        } 
+        else if (choice == 3) {
+            printf("Thank you! Exiting system...\n");
+        } 
+        else {
+            printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 3);
+
+    return 0;
+}
